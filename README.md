@@ -1,82 +1,80 @@
 # VANNATIC®
 ### Wear your own frequency.
 
-> Independent by nature. In progress by design.
+> **Independent by nature. Defined by nobody.**
 
-Vannatic is an early-stage clothing brand concept exploring independent streetwear, expressive everyday essentials, and a distinctive editorial visual identity. This repository contains the first static website direction built with semantic HTML and responsive CSS.
-
-## The experience
-
-The first version is designed as a brand introduction rather than a full e-commerce checkout. It introduces the visual language, concept collection, point of view, and brand principles.
-
-### Highlights
-
-- **Editorial landing page** with bold typography and campaign imagery.
-- **Concept collection** with three visual directions, clearly labelled as concepts.
-- **Brand manifesto** communicating Vannatic's point of view.
-- **Responsive layout** for desktop, tablet, and mobile screens.
-- **Accessible foundations** including semantic landmarks, descriptive links, and reduced-motion support.
-- **Lightweight stack** using HTML and CSS without a JavaScript framework.
-- **Distinct visual system** with warm paper, near-black, acid-lime highlights, orange accents, and mono-spaced labels.
-
-## Preview
-
-Open the index.html file in a browser, or enable GitHub Pages for this repository to publish the static site.
-
-## Project structure
-
-    Vannatic/
-    ├── index.html   # Page structure and content
-    ├── style.css    # Layout, visual system, responsive rules
-    └── README.md    # Project overview and setup guide
-
-## Run locally
-
-No build tools or dependencies are required.
-
-1. Clone or download this repository.
-2. Open index.html in a modern browser.
-3. Alternatively, use Live Server in Visual Studio Code, or run:
-
-       python -m http.server 8000
-
-4. Visit http://localhost:8000.
-
-## Publish with GitHub Pages
-
-1. Open the repository's **Settings**.
-2. Select **Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the main branch and root folder, then save.
-5. Once deployment finishes, GitHub will display the published URL in the Pages section.
-
-## Design direction
-
-| Element | Direction |
-|---|---|
-| Brand idea | Personal expression, independent streetwear |
-| Typography | Space Grotesk + DM Mono |
-| Core palette | Warm paper, near-black, acid lime, signal orange |
-| Layout | Editorial grid, oversized type, strong whitespace |
-| Tone | Direct, confident, experimental |
-
-## Before launch
-
-This is a **front-end brand concept**, not yet a production storefront. Before taking real orders, the next steps should include:
-
-- Replace concept imagery with original, licensed campaign and product photography.
-- Confirm the final logo, brand story, products, pricing, size guide, and product copy.
-- Add working social links and a verified brand contact address.
-- Connect product pages, inventory, shipping, returns, and a secure checkout platform.
-- Test keyboard navigation, mobile layouts, image loading, and real-device performance.
-- Review image licences and replace placeholder contact details before public launch.
-
-The featured pieces are explicitly labelled as visual concepts. No products are available for purchase from this static page.
-
-## Credits & assets
-
-The page uses externally hosted editorial photography from Unsplash and Google Fonts. Check current licence terms and asset suitability before commercial launch. The brand name, copy, and layout are original Vannatic concept work; the reference site informs high-level inspiration only.
+Vannatic is an independent streetwear brand built around self-expression, individuality, and everyday pieces with character. The idea is simple: clothing should feel like an extension of who you are—not a uniform telling you who to be.
 
 ---
 
-**Vannatic® — First chapter / 2026**
+## ✳ The Vannatic attitude
+
+**Wear what feels like you.**
+
+Vannatic lives between clean everyday essentials and expressive streetwear. The visual language is bold but considered: oversized typography, strong contrast, unexpected accents, and a mix of minimal foundations with experimental details.
+
+- **Independent** — personal style over passing pressure.
+- **Expressive** — pieces that let your personality speak.
+- **Everyday-ready** — designed around real life, not just the photos.
+- **Experimental** — open to new ideas, shapes, graphics, and combinations.
+
+---
+
+## Explore the brand
+
+<details>
+<summary><strong>01 · The manifesto</strong></summary>
+
+You don't need permission to be yourself.
+
+Your taste can change. Your mood can shift. Your style can be quiet one day and impossible to ignore the next. Vannatic is for that freedom—the space to experiment, mix influences, and make a look your own.
+
+**No uniform. No fixed frequency. Just yours.**
+</details>
+
+<details>
+<summary><strong>02 · The collection direction</strong></summary>
+
+Vannatic's early collection concepts explore three complementary directions:
+
+- **CORE** — versatile everyday staples, clean silhouettes, and easy combinations.
+- **SIGNAL** — graphic-led pieces with confident statements and standout details.
+- **AFTERHOURS** — darker tones, layered styling, and a more experimental edge.
+
+These are creative directions, not a claim that products are currently available for sale.
+</details>
+
+<details>
+<summary><strong>03 · Visual identity</strong></summary>
+
+| Element | Vannatic direction |
+|---|---|
+| Mood | Independent, direct, experimental |
+| Style | Contemporary streetwear with an editorial edge |
+| Typography | Bold display type paired with monospaced details |
+| Palette | Warm paper, near-black, acid lime, signal orange |
+| Graphics | Strong lettering, contrast, and unexpected accents |
+| Styling | Everyday essentials mixed with expressive statement pieces |
+
+The identity is designed to be recognisable without relying on a single trend.
+</details>
+
+<details>
+<summary><strong>04 · Who it's for</strong></summary>
+
+Vannatic is for people who treat style as personal expression: curious dressers, streetwear fans, creative minds, and anyone who enjoys making familiar pieces feel their own.
+
+There is no single way to wear Vannatic. Start minimal, go graphic, layer it up, or create a combination nobody else would think of.
+</details>
+
+---
+
+## The Vannatic promise
+
+We want every piece to feel intentional—from the idea and visual design to the way it fits into everyday life. As the brand develops, the focus is on building a clear identity, thoughtful design, and a consistent point of view rather than chasing every trend.
+
+**VANNATIC® — Wear your own frequency.**
+
+---
+
+<sub>Brand concept · First chapter · 2026</sub>
