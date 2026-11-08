@@ -79,3 +79,44 @@
 .hover-hint{margin-top:28px;border-top:1px solid var(--line);padding-top:15px;letter-spacing:.06em}
 @media(max-width:900px){.hero-editorial{grid-template-columns:1fr .9fr;min-height:590px}.hero-type-art{height:420px}.catalog-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}}
 @media(max-width:650px){.hero-editorial{display:flex;min-height:unset;padding-bottom:75px}.hero-type-art{height:340px;width:100%;padding:20px}.art-monogram{font-size:140px}.art-statement{font-size:46px}.catalog-categories{gap:22px 12px}.category-photo{aspect-ratio:4/5}.catalog-detail-head{align-items:flex-start}.catalog-detail-head h3{font-size:42px}.catalog-count{gap:7px}.catalog-count strong{font-size:38px}.catalog-toolbar{align-items:flex-start;flex-direction:column}.catalog-switcher{gap:6px}.catalog-switcher button{padding:8px 9px;font-size:8px}.back-categories{align-self:flex-end}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 11px}.catalog-product-image{aspect-ratio:4/5}.catalog-product-image img{padding:7px}.catalog-product-meta{display:flex;gap:6px}.catalog-product-meta h4{font-size:11px}.catalog-product-meta>span{font-size:7px}.flip-label{opacity:1;transform:none;font-size:7px}.manifesto-art{min-height:340px}}
+
+
+/* DARK BOTANICAL — CLOVER INSPIRED BRAND BACKDROP */
+:root{
+ --paper:#211b21;
+ --ink:#f3edf2;
+ --muted:#b7aeb7;
+ --line:#514651;
+ --acid:#78c94b;
+ --orange:#91c96f;
+ --white:#f7f3f6;
+}
+body{
+ background-color:var(--paper);
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='%2378c94b' fill-opacity='.105'%3E%3Cellipse cx='32' cy='17' rx='8' ry='12'/%3E%3Cellipse cx='47' cy='32' rx='12' ry='8'/%3E%3Cellipse cx='32' cy='47' rx='8' ry='12'/%3E%3Cellipse cx='17' cy='32' rx='12' ry='8'/%3E%3C/g%3E%3Cpath d='M32 32 Q34 43 43 51' fill='none' stroke='%2378c94b' stroke-opacity='.11' stroke-width='2'/%3E%3C/svg%3E");
+ background-size:160px 160px;
+ background-attachment:fixed;
+}
+.announcement{background:#171319;color:#e9e1e9}
+.site-header{border-color:#514651}
+.hero-description{color:#c5bac5}
+.hero-type-art{background:#302731;color:#f3edf2}
+.art-rule{background:#716475}
+.art-bottom{border-color:#716475}
+.ticker{background:#344b30;color:#f1eee9;border-color:#65795c}
+.manifesto{background:#29232b}
+.manifesto-art{background:#342b35}
+.manifesto-photo{background:linear-gradient(145deg,#302631 0%,#493c4b 48%,#25202a 100%)}
+.manifesto-art:after{color:#a6d58d}
+.manifesto-copy>p:not(.eyebrow){color:#c5bac5}
+.category-photo,.catalog-product-image{background:#302832}
+.catalog-results{border-color:var(--line)}
+.catalog-toolbar{border-color:var(--line)}
+.values-grid{border-color:var(--line)}
+.values-grid article+article{border-color:var(--line)}
+.values-grid p{color:#c5bac5}
+.closing{background:#3d5937;color:#f5f1eb}
+.closing .eyebrow{color:#e0e9d9}
+.closing h2 em{color:#d4edc4}
+footer{background:#171319}
+@media(max-width:650px){body{background-size:128px 128px}}
