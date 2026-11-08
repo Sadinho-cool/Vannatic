@@ -26,3 +26,56 @@
 .hover-hint{font:9px var(--mono);color:var(--muted);margin-top:24px}
 @media(max-width:900px){.catalog-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.category-photo{height:300px}.catalog-product-image{height:340px}}
 @media(max-width:650px){.catalog-categories{gap:20px 12px}.category-photo{height:235px}.category-bottom strong{font-size:16px}.category-bottom small{font-size:8px}.catalog-results{margin-top:38px}.catalog-toolbar{align-items:start;gap:14px}.back-categories{font-size:8px;white-space:nowrap}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 11px}.catalog-product-image{height:250px}.catalog-product-meta{display:block}.catalog-product-meta span{text-align:left;margin-top:6px;font-size:7px}.catalog-product-meta h4{font-size:11px}.flip-label,.product-number{font-size:7px;padding:6px}}
+
+/* EDITORIAL HERO — TYPOGRAPHY IN PLACE OF MODEL PHOTOGRAPHY */
+.hero-editorial{grid-template-columns:1fr .9fr;min-height:650px;padding-top:76px;padding-bottom:90px}
+.hero-type-art{height:500px;background:#ded9cf;color:var(--ink);padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+.art-index,.art-bottom{font:9px var(--mono);letter-spacing:.1em}
+.art-monogram{font-size:clamp(110px,18vw,220px);font-weight:700;letter-spacing:-.14em;line-height:.8;margin:20px 0 0}
+.art-monogram span{font:18px var(--mono);vertical-align:top;letter-spacing:0;margin-left:10px}
+.art-rule{height:1px;background:var(--ink);width:100%;margin:25px 0}
+.art-statement{font-size:clamp(37px,5vw,68px);font-weight:600;letter-spacing:-.09em;line-height:.84;margin:0 auto 0 0}
+.art-statement em{font-style:normal;color:var(--orange)}
+.art-bottom{display:flex;justify-content:space-between;border-top:1px solid #a9a297;padding-top:14px}
+.hero-editorial .hero-bottom{bottom:20px}
+.manifesto{background:#e7e3da}.manifesto-art{background:#c9c3b7}
+.manifesto-photo{background:linear-gradient(145deg,#c5bfb3 0%,#e2ded5 48%,#a59e91 100%);filter:none}
+.manifesto-art:after{content:"VANNATIC";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);font-size:clamp(65px,10vw,130px);font-weight:700;letter-spacing:-.1em;color:#292720;opacity:.9;white-space:nowrap}
+.manifesto-number,.manifesto-side{z-index:1;color:var(--ink)}
+/* REFINED CATEGORY AND PRODUCT ARCHIVE */
+.catalog-categories{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.category-card{position:relative}
+.category-photo{height:auto;aspect-ratio:4/5;background:#e5e1d9}
+.category-photo img{object-fit:cover;padding:0}
+.category-bottom{padding:17px 3px 14px}
+.category-bottom strong{font-size:22px;letter-spacing:-.065em}
+.category-card:focus-visible,.catalog-switcher button:focus-visible,.back-categories:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+.catalog-results{margin-top:58px;padding-top:32px;border-top:1px solid var(--line)}
+.catalog-detail-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
+.catalog-detail-head .eyebrow{margin-bottom:13px}
+.catalog-detail-head h3{font-size:clamp(40px,6vw,76px);line-height:.9;letter-spacing:-.09em;margin:0}
+.catalog-detail-head>div:first-child>p:last-child{font-size:13px;color:var(--muted);line-height:1.7;margin:17px 0 0;max-width:440px}
+.catalog-count{display:flex;align-items:center;gap:12px;padding-bottom:5px}
+.catalog-count strong{font-size:48px;letter-spacing:-.08em;font-weight:500}
+.catalog-count span{font:8px/1.6 var(--mono);color:var(--muted);letter-spacing:.06em}
+.catalog-toolbar{align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:25px}
+.catalog-switcher{display:flex;flex-wrap:wrap;gap:7px}
+.catalog-switcher button{border:1px solid var(--line);background:transparent;padding:9px 13px;font:9px var(--mono);letter-spacing:.04em;color:var(--muted);cursor:pointer;transition:all .2s}
+.catalog-switcher button:hover,.catalog-switcher button.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.back-categories{font-size:9px}
+.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:38px 18px}
+.catalog-product{min-width:0}
+.catalog-product-image{height:auto;aspect-ratio:4/5;background:#e9e6df;position:relative}
+.catalog-product-image img{object-fit:contain;padding:12px;transition:opacity .18s,transform .4s}
+.catalog-product-image:hover img{transform:scale(1.025)}
+.catalog-product-image img.is-swapping{opacity:.35}
+.product-number{left:13px;top:13px;background:var(--paper)}
+.flip-label{right:13px;top:13px;background:var(--paper);opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s}
+.catalog-product-image:hover .flip-label{opacity:1;transform:translateY(0)}
+.catalog-product-meta{align-items:flex-start;padding:15px 1px 13px}
+.catalog-product-meta small{display:block;font:8px var(--mono);color:var(--muted);letter-spacing:.08em;margin-bottom:7px}
+.catalog-product-meta h4{font-size:14px;letter-spacing:-.035em}
+.catalog-product-meta>span{font-size:8px;color:var(--muted);padding-top:2px}
+.hover-hint{margin-top:28px;border-top:1px solid var(--line);padding-top:15px;letter-spacing:.06em}
+@media(max-width:900px){.hero-editorial{grid-template-columns:1fr .9fr;min-height:590px}.hero-type-art{height:420px}.catalog-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}}
+@media(max-width:650px){.hero-editorial{display:flex;min-height:unset;padding-bottom:75px}.hero-type-art{height:340px;width:100%;padding:20px}.art-monogram{font-size:140px}.art-statement{font-size:46px}.catalog-categories{gap:22px 12px}.category-photo{aspect-ratio:4/5}.catalog-detail-head{align-items:flex-start}.catalog-detail-head h3{font-size:42px}.catalog-count{gap:7px}.catalog-count strong{font-size:38px}.catalog-toolbar{align-items:flex-start;flex-direction:column}.catalog-switcher{gap:6px}.catalog-switcher button{padding:8px 9px;font-size:8px}.back-categories{align-self:flex-end}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 11px}.catalog-product-image{aspect-ratio:4/5}.catalog-product-image img{padding:7px}.catalog-product-meta{display:flex;gap:6px}.catalog-product-meta h4{font-size:11px}.catalog-product-meta>span{font-size:7px}.flip-label{opacity:1;transform:none;font-size:7px}.manifesto-art{min-height:340px}}
