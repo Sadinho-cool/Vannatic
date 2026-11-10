@@ -129,9 +129,26 @@ function showCategory(key) {
  grid.innerHTML = catalog[key].map((item,i) => {
   const front = asset + item[1];
   const back = item[2] ? asset + item[2] : '';
-  return '<article class="catalog-product"><button class="catalog-product-open" type="button" data-product-index="'+i+'" aria-label="View details for '+item[0]+'"><span class="catalog-product-image"><img src="'+front+'" alt="'+item[0]+' front" loading="lazy"><span class="product-number">VN / '+String(i+1).padStart(2,'0')+'</span><span class="flip-label">'+(back?'VIEW FRONT & BACK ↗':'VIEW DETAILS ↗')+'</span></span><span class="catalog-product-meta"><span><small>VANNATIC / '+String(i+1).padStart(2,'0')+'</small><strong>'+item[0]+'</strong></span><span>VIEW DETAILS ↗</span></span></button></article>';
+  return '<article class="catalog-product"><button class="catalog-product-open" type="button" data-product-index="'+i+'" aria-label="View details for '+item[0]+'"><span class="catalog-product-image"><img src="'+front+'" alt="'+item[0]+' front" loading="lazy" data-front="'+front+'" data-back="'+back+'"><span class="product-number">VN / '+String(i+1).padStart(2,'0')+'</span>'+(back?'<span class="card-image-arrows"><span class="card-arrow" data-view="front" role="button" tabindex="0" aria-label="Show front image">‹</span><span class="card-arrow" data-view="back" role="button" tabindex="0" aria-label="Show back image">›</span></span>':'')+'</span><span class="catalog-product-meta"><span><small>VANNATIC / '+String(i+1).padStart(2,'0')+'</small><strong>'+item[0]+'</strong></span><span>VIEW DETAILS ↗</span></span></button></article>';
  }).join('');
- grid.querySelectorAll('.catalog-product-open').forEach(button => button.addEventListener('click',()=>openProduct(catalog[key][Number(button.dataset.productIndex)],key,Number(button.dataset.productIndex))));
+ grid.querySelectorAll('.catalog-product-open').forEach(button => {
+  const image = button.querySelector('img[data-back]');
+  if (image && image.dataset.back) {
+   const showView = view => {
+    image.src = view === 'back' ? image.dataset.back : image.dataset.front;
+    image.alt = catalog[key][Number(button.dataset.productIndex)][0] + ' ' + view + ' view';
+    button.querySelectorAll('.card-arrow').forEach(arrow => arrow.classList.toggle('active',arrow.dataset.view===view));
+   };
+   button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')showView('back');});
+   button.addEventListener('pointerleave',event=>{if(event.pointerType==='mouse')showView('front');});
+   button.querySelectorAll('.card-arrow').forEach(arrow=>{
+    const activate=event=>{event.preventDefault();event.stopPropagation();showView(arrow.dataset.view);};
+    arrow.addEventListener('click',activate);
+    arrow.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){activate(event);}});
+   });
+  }
+  button.addEventListener('click',()=>openProduct(catalog[key][Number(button.dataset.productIndex)],key,Number(button.dataset.productIndex)));
+ });
  categories.hidden = true;
  results.hidden = false;
  document.getElementById('collection').scrollIntoView({behavior:'smooth',block:'start'});
