@@ -83,12 +83,28 @@ productModal.innerHTML = `
 document.body.appendChild(productModal);
 let activeModalItem = null;
 let activeModalView = 0;
+function smoothImageChange(image, src) {
+ if (!image || !src || image.src.endsWith(src)) return;
+ const token = (Number(image.dataset.swapToken) || 0) + 1;
+ image.dataset.swapToken = String(token);
+ image.classList.add('image-fading');
+ window.setTimeout(() => {
+  if (image.dataset.swapToken !== String(token)) return;
+  image.src = src;
+  const reveal = () => {
+   if (image.dataset.swapToken === String(token)) image.classList.remove('image-fading');
+  };
+  if (image.complete) window.requestAnimationFrame(reveal);
+  else image.addEventListener('load',reveal,{once:true});
+  image.addEventListener('error',reveal,{once:true});
+ },140);
+}
 function updateModalView() {
  if (!activeModalItem) return;
  const hasBack = Boolean(activeModalItem.back);
  const src = activeModalView === 1 && hasBack ? activeModalItem.back : activeModalItem.front;
  const image = productModal.querySelector('.modal-product-image');
- image.src = src;
+ smoothImageChange(image,src);
  image.alt = activeModalItem.name + (activeModalView === 1 ? ' back view' : ' front view');
  
  productModal.querySelector('.modal-view-count').textContent = hasBack ? (activeModalView === 0 ? '01 / 02' : '02 / 02') : '01 / 01';
@@ -135,7 +151,7 @@ function showCategory(key) {
   const image = button.querySelector('img[data-back]');
   if (image && image.dataset.back) {
    const showView = view => {
-    image.src = view === 'back' ? image.dataset.back : image.dataset.front;
+    smoothImageChange(image,view === 'back' ? image.dataset.back : image.dataset.front);
     image.alt = catalog[key][Number(button.dataset.productIndex)][0] + ' ' + view + ' view';
     button.querySelectorAll('.card-arrow').forEach(arrow => arrow.classList.toggle('active',arrow.dataset.view===view));
    };
