@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f5f2ec">
+<meta name="theme-color" content="#211b21">
 <meta name="description" content="Vannatic — independent streetwear for people who move with intention.">
 <link rel="icon" type="image/png" href="./favicon.png?v=3">
 <title>Vannatic — Independent Clothing Label</title>
@@ -59,6 +59,67 @@ const descriptions = {boxy:'Relaxed proportions and graphic statements. Explore 
 const categories = document.querySelector('.catalog-categories');
 const results = document.getElementById('catalog-results');
 const grid = document.getElementById('catalog-grid');
+const productModal = document.createElement('div');
+productModal.className = 'product-modal';
+productModal.id = 'product-modal';
+productModal.hidden = true;
+productModal.innerHTML = `
+ <div class="product-modal-backdrop" data-close-modal></div>
+ <section class="product-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <button class="modal-close" type="button" aria-label="Close product details" data-close-modal>×</button>
+  <div class="modal-visual">
+   <img class="modal-product-image" alt="">
+   <button class="modal-arrow modal-prev" type="button" aria-label="Show front view">‹</button>
+   <span class="modal-view-label">FRONT VIEW</span>
+   <button class="modal-arrow modal-next" type="button" aria-label="Show back view">›</button>
+  </div>
+  <div class="modal-information">
+   <p class="eyebrow">VANNATIC / PRODUCT DETAIL</p>
+   <h3 id="modal-title"></h3>
+   <p class="modal-description"></p>
+   <div class="modal-meta"><span class="modal-index"></span><span class="modal-view-count"></span></div>
+  </div>
+ </section>`;
+document.body.appendChild(productModal);
+let activeModalItem = null;
+let activeModalView = 0;
+function updateModalView() {
+ if (!activeModalItem) return;
+ const hasBack = Boolean(activeModalItem.back);
+ const src = activeModalView === 1 && hasBack ? activeModalItem.back : activeModalItem.front;
+ const image = productModal.querySelector('.modal-product-image');
+ image.src = src;
+ image.alt = activeModalItem.name + (activeModalView === 1 ? ' back view' : ' front view');
+ productModal.querySelector('.modal-view-label').textContent = activeModalView === 1 ? 'BACK VIEW' : 'FRONT VIEW';
+ productModal.querySelector('.modal-view-count').textContent = hasBack ? (activeModalView === 0 ? '01 / 02' : '02 / 02') : '01 / 01';
+ productModal.querySelector('.modal-prev').hidden = !hasBack;
+ productModal.querySelector('.modal-next').hidden = !hasBack;
+}
+function openProduct(item, category, index) {
+ activeModalItem = {name:item[0],front:asset+item[1],back:item[2]?asset+item[2]:'',category,index};
+ activeModalView = 0;
+ productModal.querySelector('#modal-title').textContent = item[0];
+ productModal.querySelector('.modal-description').textContent = 'A closer look at this piece from the Vannatic ' + labels[category].replace(' COLLECTION','').toLowerCase() + ' selection. Switch between the front and reverse views to explore both sides of the design.';
+ productModal.querySelector('.modal-index').textContent = 'VN / ' + String(index+1).padStart(2,'0');
+ updateModalView();
+ productModal.hidden = false;
+ document.body.classList.add('modal-open');
+ productModal.querySelector('.modal-close').focus();
+}
+function closeProduct() {
+ productModal.hidden = true;
+ document.body.classList.remove('modal-open');
+ activeModalItem = null;
+}
+productModal.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click',closeProduct));
+productModal.querySelector('.modal-prev').addEventListener('click',()=>{activeModalView=0;updateModalView();});
+productModal.querySelector('.modal-next').addEventListener('click',()=>{activeModalView=1;updateModalView();});
+document.addEventListener('keydown',event=>{
+ if(productModal.hidden) return;
+ if(event.key==='Escape') closeProduct();
+ if(event.key==='ArrowLeft' && activeModalItem && activeModalItem.back){activeModalView=0;updateModalView();}
+ if(event.key==='ArrowRight' && activeModalItem && activeModalItem.back){activeModalView=1;updateModalView();}
+});
 function showCategory(key) {
  document.getElementById('active-category-title').textContent = labels[key];
  document.getElementById('category-description').textContent = descriptions[key];
@@ -66,19 +127,14 @@ function showCategory(key) {
  document.getElementById('catalog-switcher').innerHTML = Object.keys(labels).map(k => '<button type="button" class="'+(k===key?'active':'')+'" data-switch="'+k+'">'+labels[k].replace(' COLLECTION','')+'</button>').join('');
  document.getElementById('catalog-switcher').querySelectorAll('button').forEach(btn => btn.addEventListener('click',()=>showCategory(btn.dataset.switch)));
  grid.innerHTML = catalog[key].map((item,i) => {
-  const front = asset + item[1], back = item[2] ? asset + item[2] : '';
-  return '<article class="catalog-product"><div class="catalog-product-image"><img src="'+front+'" alt="'+item[0]+' front" loading="lazy" '+(back ? 'data-back="'+back+'" data-front="'+front+'" tabindex="0"' : '')+'><span class="product-number">VN / '+String(i+1).padStart(2,'0')+'</span>'+(back ? '<span class="flip-label">VIEW REVERSE ↗</span>' : '<span class="flip-label">FIRST CHAPTER</span>')+'</div><div class="catalog-product-meta"><div><small>VANNATIC / '+String(i+1).padStart(2,'0')+'</small><h4>'+item[0]+'</h4></div><span>PRODUCT STUDY</span></div></article>';
+  const front = asset + item[1];
+  const back = item[2] ? asset + item[2] : '';
+  return '<article class="catalog-product"><button class="catalog-product-open" type="button" data-product-index="'+i+'" aria-label="View details for '+item[0]+'"><span class="catalog-product-image"><img src="'+front+'" alt="'+item[0]+' front" loading="lazy"><span class="product-number">VN / '+String(i+1).padStart(2,'0')+'</span><span class="flip-label">'+(back?'VIEW FRONT & BACK ↗':'VIEW DETAILS ↗')+'</span></span><span class="catalog-product-meta"><span><small>VANNATIC / '+String(i+1).padStart(2,'0')+'</small><strong>'+item[0]+'</strong></span><span>VIEW DETAILS ↗</span></span></button></article>';
  }).join('');
- categories.hidden = true; results.hidden = false;
+ grid.querySelectorAll('.catalog-product-open').forEach(button => button.addEventListener('click',()=>openProduct(catalog[key][Number(button.dataset.productIndex)],key,Number(button.dataset.productIndex))));
+ categories.hidden = true;
+ results.hidden = false;
  document.getElementById('collection').scrollIntoView({behavior:'smooth',block:'start'});
- grid.querySelectorAll('img[data-back]').forEach(img => {
-  const swap = (src,alt) => { img.classList.add('is-swapping'); img.src = src; img.alt = alt; window.setTimeout(()=>img.classList.remove('is-swapping'),180); };
-  img.addEventListener('pointerenter', () => { if (matchMedia('(hover: hover)').matches) swap(img.dataset.back, img.alt.replace('front','back')); });
-  img.addEventListener('pointerleave', () => swap(img.dataset.front, img.alt.replace('back','front')));
-  img.addEventListener('focus', () => swap(img.dataset.back, img.alt.replace('front','back')));
-  img.addEventListener('blur', () => swap(img.dataset.front, img.alt.replace('back','front')));
-  img.addEventListener('click', () => { if (!matchMedia('(hover: hover)').matches) { const showingBack=img.src.endsWith(img.dataset.back.split('/').pop()); swap(showingBack?img.dataset.front:img.dataset.back, showingBack?img.alt.replace('back','front'):img.alt.replace('front','back')); }});
- });
 }
 document.querySelectorAll('.category-card').forEach(button => button.addEventListener('click', () => showCategory(button.dataset.category)));
 document.getElementById('back-categories').addEventListener('click', () => { results.hidden = true; categories.hidden = false; document.getElementById('collection').scrollIntoView({behavior:'smooth',block:'start'}); });
