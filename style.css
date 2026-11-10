@@ -356,3 +356,35 @@ body.modal-open{overflow:hidden}
  .card-image-arrows{opacity:1}
  .card-arrow{width:34px;height:34px;font-size:27px}
 }
+
+
+/* REFINED MOTION — SOFT, EDITORIAL TRANSITIONS */
+.catalog-product-image{overflow:hidden;isolation:isolate}
+.catalog-product-image img,.modal-product-image{
+ opacity:1;transform:translateZ(0) scale(1);
+ transition:opacity .28s ease,transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease;
+ will-change:opacity,transform;
+}
+.catalog-product-image img.image-fading,.modal-product-image.image-fading{
+ opacity:.12;transform:translateZ(0) scale(.985);filter:blur(2px);
+}
+.catalog-product-open .catalog-product-image img{
+ transition:opacity .28s ease,transform .65s cubic-bezier(.16,1,.3,1),filter .35s ease;
+}
+.catalog-product-open:hover .catalog-product-image img{transform:scale(1.025)}
+.card-image-arrows{transition:opacity .28s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
+.card-arrow{
+ transition:background .25s ease,color .25s ease,border-color .25s ease,transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;
+}
+.card-arrow:hover{box-shadow:0 5px 18px rgba(0,0,0,.2)}
+.product-modal:not([hidden]) .product-modal-backdrop{animation:modalBackdropIn .32s ease both}
+.product-modal:not([hidden]) .product-modal-panel{animation:modalPanelIn .48s cubic-bezier(.16,1,.3,1) both}
+.modal-close{transition:background .25s ease,color .25s ease,transform .3s cubic-bezier(.2,.7,.2,1)}
+.modal-close:hover{transform:rotate(90deg);background:#78c94b;color:#211b21}
+.modal-information h3,.modal-description,.modal-meta{animation:modalTextIn .55s .08s both}
+@keyframes modalBackdropIn{from{opacity:0}to{opacity:1}}
+@keyframes modalPanelIn{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes modalTextIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
