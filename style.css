@@ -301,3 +301,13 @@ body.modal-open{overflow:hidden}
  .modal-meta{margin-top:25px}
  .modal-close{top:9px;right:9px}
 }
+
+/* MINIMAL IMAGE NAVIGATION — ICONS ONLY */
+.modal-view-label{display:none!important}
+.modal-arrow{
+ width:44px;
+ height:44px;
+ font-family:Arial,sans-serif;
+ font-size:32px;
+ font-weight:300;
+}
