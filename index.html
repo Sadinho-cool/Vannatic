@@ -28,7 +28,7 @@
 <div class="catalog-detail-head"><div><p class="eyebrow">VANNATIC / PRODUCT ARCHIVE</p><h3 id="active-category-title">BOXY COLLECTION</h3><p id="category-description">Graphic silhouettes, considered details, and statement pieces.</p></div><div class="catalog-count"><strong id="category-count">11</strong><span>PIECES<br>IN THIS CATEGORY</span></div></div>
 <div class="catalog-toolbar"><div class="catalog-switcher" id="catalog-switcher"></div><button class="back-categories" id="back-categories" type="button">← ALL CATEGORIES</button></div>
 <div class="catalog-grid" id="catalog-grid"></div>
-<p class="hover-hint">MOVE YOUR CURSOR OVER A TWO-SIDED DESIGN TO VIEW THE REVERSE</p>
+<p class="hover-hint">SELECT A PIECE TO EXPLORE THE DESIGN</p>
 </div>
 <div class="collection-foot"><span>FOUR CATEGORIES. ONE POINT OF VIEW.</span><span>EARLY COLLECTION PREVIEW — DETAILS SUBJECT TO CHANGE.</span></div>
 </section>
@@ -70,7 +70,7 @@ productModal.innerHTML = `
   <div class="modal-visual">
    <img class="modal-product-image" alt="">
    <button class="modal-arrow modal-prev" type="button" aria-label="Show front view">‹</button>
-   <span class="modal-view-label">FRONT VIEW</span>
+   
    <button class="modal-arrow modal-next" type="button" aria-label="Show back view">›</button>
   </div>
   <div class="modal-information">
@@ -90,7 +90,7 @@ function updateModalView() {
  const image = productModal.querySelector('.modal-product-image');
  image.src = src;
  image.alt = activeModalItem.name + (activeModalView === 1 ? ' back view' : ' front view');
- productModal.querySelector('.modal-view-label').textContent = activeModalView === 1 ? 'BACK VIEW' : 'FRONT VIEW';
+ 
  productModal.querySelector('.modal-view-count').textContent = hasBack ? (activeModalView === 0 ? '01 / 02' : '02 / 02') : '01 / 01';
  productModal.querySelector('.modal-prev').hidden = !hasBack;
  productModal.querySelector('.modal-next').hidden = !hasBack;
